@@ -6,7 +6,7 @@ public class AssociativeArray {
 		// TODO Auto-generated method stub
 System.out.println("hallo");
 System.out.println("i love Sinan ");
-System.out.println("pisser");
+System.out.println("pisser timo");
 	}
 
 }
