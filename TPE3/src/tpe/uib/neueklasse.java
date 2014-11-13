@@ -1,6 +1,6 @@
 package tpe.uib;
 
 public class neueklasse {
-int a =24;
+int a =42;
 
 }
