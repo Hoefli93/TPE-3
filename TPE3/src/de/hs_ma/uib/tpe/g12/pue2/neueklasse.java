@@ -1,4 +1,4 @@
-package tpe.uib.ü3.hs_ma;
+package de.hs_ma.uib.tpe.g12.pue2;
 
 public class neueklasse {
 int a =31;
