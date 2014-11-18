@@ -1,6 +1,0 @@
-package de.hs_ma.uib.tpe.g12.pue2;
-
-public class neueklasse {
-int a =5000;
-// nils wollte es sehen
-}

@@ -1,33 +1,30 @@
 package de.hs_ma.uib.tpe.g12.pue2;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+public interface AssociativeArray {
 
+	public void clear();
 
-public class AssociativeArray {
+	public int containsValue();
 
-public static void main(String args[]){
-    Map<String,String> myMap1 = new HashMap<String, String>();
+	public int containsKey();
 
-    List<Map<String , String>> myMap  = new ArrayList<Map<String,String>>();
+	public int get();
 
-    myMap1.put("URL", "Val0");
-    myMap1.put("CRC", "Vla1");
-    myMap1.put("SIZE", "Vla2");
-    myMap1.put("PROGRESS", "Vla2");
+	public int isEmpty();
 
-    myMap.add(0,myMap1);
-    myMap.add(1,myMap1);
+	public void put();
 
-    for (Map<String, String> map : myMap) {
-        System.out.println(map.get("URL"));
-    }
+	public void putAll();
 
-    //System.out.println(myMap);
+	public int remove();
 
-}
+	public int size();
 
+	public void update();
 
+	public void forEach();
+
+	public void extractAll();
+
+	public void map();
 }
