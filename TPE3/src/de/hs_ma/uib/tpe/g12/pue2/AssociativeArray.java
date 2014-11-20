@@ -1,18 +1,16 @@
 package de.hs_ma.uib.tpe.g12.pue2;
 
-public interface AssociativeArray {
+public interface AssociativeArray <K,V> {
 
 	public void clear();
 
-	public int containsValue();
+	public boolean containsValue();
 
-	public int containsKey();
+	public boolean containsKey();
 
-	public int get();
+	public boolean isEmpty();
 
-	public int isEmpty();
-
-	public void put();
+	public void put(K key, V value);
 
 	public void putAll();
 
@@ -27,4 +25,10 @@ public interface AssociativeArray {
 	public void extractAll();
 
 	public void map();
+
+	public K getKey(V value);
+
+	public V getValue(K key);
+
+	
 }
