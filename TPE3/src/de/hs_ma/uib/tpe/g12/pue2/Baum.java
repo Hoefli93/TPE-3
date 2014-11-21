@@ -26,7 +26,7 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 	}
 
 	Baumknoten<K, V> wurzel = null;
-	Baumknoten<K, V> newNode = new Baumknoten<K, V>(key, value);
+
 
 	public Baum() {
 
