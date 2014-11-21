@@ -4,9 +4,9 @@ public interface AssociativeArray <K,V> {
 
 	public void clear();
 
-	public boolean containsValue();
+	public boolean containsValue(V value);
 
-	public boolean containsKey();
+	public boolean containsKey(K Key);
 
 	public boolean isEmpty();
 

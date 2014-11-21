@@ -26,6 +26,7 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 	}
 
 	Baumknoten<K, V> wurzel = null;
+	Baumknoten<K, V> newNode = new Baumknoten<K, V>(key, value);
 
 	public Baum() {
 
@@ -41,72 +42,77 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 
 	@Override
 	public boolean containsValue(V value) {
+		return containsValue(wurzel, value);
+		 }
 
-		K key = this.get(key);
-		
+		 public boolean containsValue(Baumknoten<K, V> node, V value) {
+		  boolean result;
+		  if (node.value.equals(value)) {
+		   return true;
+		  } else {
+		   if (value.hashCode() < node.value.hashCode() && node.links != null) {
+		    result = containsValue(node.links, value);
+		   } else if (value.hashCode() > node.value.hashCode() && node.rechts != null) {
 
-		Baumknoten<K, V> newNode = new Baumknoten<K, V>(key, value);
+		    result = containsValue(node.rechts, value);
+		   }
+		  }
 
-		if (newNode.key.hashCode() < wurzel.key.hashCode()) { // links einfuegen
-			if (wurzel.links == null)
-				wurzel.links = newNode;
-			else
-				put(wurzel.links, newNode);
-		} else { // rechts einfuegen
-			if (wurzel.rechts == null)
-				wurzel.rechts = newNode;
-			else
-				put(wurzel.rechts, newNode);
-		}
+		  return false;
 
-	}
+		 }
+	
 
-	public void containsValue(Baumknoten<K, V> node, Baumknoten<K, V> newNode) {
-		if (newNode.key.hashCode() < node.key.hashCode()) { // links einfuegen
-			if (node.links == null)
-				node.links = newNode;
-			else
-				put(node.links, newNode);
-		} else { // rechts einfuegen
-			if (node.rechts == null)
-				node.rechts = newNode;
-			else
-				put(node.rechts, newNode);
-		}
+	@Override
+	public boolean containsKey(K key) {
+		  return containsKey(wurzel, key);
+		 }
+
+		 public boolean containsKey(Baumknoten<K, V> node, K key) {
+		  boolean result;
+		  if (node.key.equals(key)) {
+		   return true;
+		  } else {
+		   if (key.hashCode() < node.key.hashCode() && node.links != null) {
+
+		    result = containsKey(node.links, key);
+		   } else if (key.hashCode() > node.key.hashCode()
+		     && node.rechts != null) {
+
+		    result = containsKey(node.rechts, key);
+		   }
+		  }
+
+		return false;
 	}
 
 	@Override
-	public boolean containsKey() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
-	@Override
+			 
 	public V getValue(K key) {
 
-		
-		Baumknoten<K, V> newNode = new Baumknoten<K, V>(key, value);
+		  return get(wurzel, key);
+		 }
 
-		if (newNode.key.hashCode() < wurzel.key.hashCode()) {
-			if(newNode.key.hashCode()==key.hashCode())// links einfuegen
-			return(newNode.value); //mehrmals 
-		} else { // rechts einfuegen
-			if (wurzel.rechts == null)
-				wurzel.rechts = newNode;
-			else
-				getValue(wurzel.rechts, newNode);
-		}
+		 public V get(Baumknoten<K, V> node, K key) {
+		  V value = null;
+		  if (node.key.equals(key)) {
+		   return node.value;
+		  } else {
+		   if (key.hashCode() < node.key.hashCode() && node.links != null) {
 
-	}
-	
-	public K getKey(V value) {
-		
-		if (isEmpty()) {
-			return null; }
-		
-		
-		
-	}
+		    value = get(node.links, key);
+		   } else if (key.hashCode() > node.key.hashCode()
+		     && node.rechts != null) {
+
+		    value = get(node.rechts, key);
+		   }
+		  }
+
+		  return value;
+
+		 }
+
 
 	@Override
 	public boolean isEmpty() {
