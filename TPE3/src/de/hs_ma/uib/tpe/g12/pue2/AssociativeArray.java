@@ -14,7 +14,7 @@ public interface AssociativeArray <K,V> {
 
 	public void putAll();
 
-	public int remove();
+	public K remove(K key);
 
 	public int size();
 
@@ -30,5 +30,8 @@ public interface AssociativeArray <K,V> {
 
 	public V getValue(K key);
 
+	V get(K key);
+
+	
 	
 }
