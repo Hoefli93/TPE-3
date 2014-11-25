@@ -1,7 +1,10 @@
 package de.hs_ma.uib.tpe.g12.pue2;
 
-import java.util.HashMap;
+
 import java.util.Map;
+import java.util.function.*;
+
+
 
 public class Baum<K, V> implements AssociativeArray<K, V> {
 
@@ -116,12 +119,12 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 	public void put(K key, V value) {
 		Baumknoten<K, V> newNode = new Baumknoten<K, V>(key, value);
 
-		if (newNode.key.hashCode() < wurzel.key.hashCode()) { // links einfuegen
+		if (newNode.key.hashCode() < wurzel.key.hashCode()) {
 			if (wurzel.links == null)
 				wurzel.links = newNode;
 			else
 				put(wurzel.links, newNode);
-		} else { // rechts einfuegen
+		} else {
 			if (wurzel.rechts == null)
 				wurzel.rechts = newNode;
 			else
@@ -131,12 +134,12 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 	}
 
 	public void put(Baumknoten<K, V> node, Baumknoten<K, V> newNode) {
-		if (newNode.key.hashCode() < node.key.hashCode()) { // links einfuegen
+		if (newNode.key.hashCode() < node.key.hashCode()) { 
 			if (node.links == null)
 				node.links = newNode;
 			else
 				put(node.links, newNode);
-		} else { // rechts einfuegen
+		} else {
 			if (node.rechts == null)
 				node.rechts = newNode;
 			else
@@ -145,78 +148,113 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 	}
 
 	@Override
-	public void putAll() {
-		// TODO Auto-generated method stub
+	public void putAll(Baum<? extends K, ? extends V> m) {
 
+		
+		
+		for(int i=0;i<=size();i++){
+			m.put(this.wurzel.key,));
+	}
+		
 	}
 
 	@Override
-	public K remove(K key) {
-	
-		return remove(wurzel,key); }
-		
-	public K remove(Baumknoten<K,V>node,K key){
-		if(!containsKey(key)){
+	public V remove(K key) {
+
+		return remove(wurzel, key);
+	}
+
+	public V remove(Baumknoten<K, V> node, K key) {
+		if (!containsKey(key)) {
 			return null;
 		}
-		else (node.key.hashCode() < wurzel.key.hashCode()) { // links einfuegen
-			if (wurzel.links == null)
-				wurzel.links = node;
-			else
-				remove(wurzel.links, node);
-		} else if { // rechts einfuegen
-			if (wurzel.rechts == null)
-				wurzel.rechts = node;
-			else
-				remove(wurzel.rechts, node);
-		
-	
+
+		if (node.key == key) {
+			node = null;
+			return node.value;
+
+			/*
+			 * Hinweis – Uberlegen Sie, wie sie bei ¨ remove mit den Kindknoten
+			 * des zu entfernenden Knotens umgehen. Hier kann durch geschickte
+			 * Wiederverwendung einer anderen Methode viel Programmieraufwand
+			 * gespart werden.
+			 */
 
 		}
 
+		else if (node.key.hashCode() < wurzel.key.hashCode()) {
+			remove(node.links, key);
+		}
 
-			}
+		else if (node.key.hashCode() < wurzel.key.hashCode()) {
+			remove(node.rechts, key);
+		}
+		return null;
+
+	}
 
 	@Override
 	public int size() {
-		Baumknoten<K, V> newNode = new Baumknoten<K, V>(key, value);
+		
+		return size(wurzel);
+	}
 
-		if (newNode.key.hashCode() < wurzel.key.hashCode()) { // links einfuegen
-			if (wurzel.links == null)
-				wurzel.links = newNode;
-			else
-				put(wurzel.links, newNode);
-		} else { // rechts einfuegen
-			if (wurzel.rechts == null)
-				wurzel.rechts = newNode;
-			else
-				put(wurzel.rechts, newNode);
+	public int size(Baumknoten<K, V> node) {
+
+		int size = 0;
+
+		if (node.key.hashCode() < wurzel.key.hashCode()) {
+			size++;
+			size(node.links);
+
+		}
+
+		else if (node.key.hashCode() < wurzel.key.hashCode()) {
+			size++;
+			size(node.rechts);
+
+		}
+
+		return size;
+
+	}
+
+	@Override
+	public void update(K key) {
+
+		update(wurzel, key);
+	}
+
+	public void update(Baumknoten<K, V> node, K key) {
+
+		node.value = get(key);
+
+	}
+
+	@Override
+	public  void forEach(BiConsumer<K,V>a) {
+		
+		for( a : Baum ){
+			
 		}
 
 	}
 
 	@Override
-	public void update() {
-		// TODO Auto-generated method stub
+	public void extractAll(Baum<K,V> neu) {
 
+		Baum<K,V> alt = new Baum<K,V>();
+	
+		neu.putAll(alt);
 	}
 
 	@Override
-	public void forEach() {
-		// TODO Auto-generated method stub
-
+	public Baum<K,V> map(BiFunction<K,V>b) {
+		
+		Baum<K,V> alt = new Baum<K,V>();
 	}
 
-	@Override
-	public void extractAll() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void map() {
-		// TODO Auto-generated method stub
-
-	}
+	
+	
 
 }
