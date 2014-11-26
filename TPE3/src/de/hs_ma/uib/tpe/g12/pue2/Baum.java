@@ -75,7 +75,7 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 
 		@Override
 		public String toString() {
-			return "Node [key=" + key + ", value=" + value + "]";
+			return "Node {KEY=" + value + "}";
 		}
 
 	}
@@ -304,15 +304,13 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 	}
 
 	public void update(Baumknoten<K, V> node, K key, V value) {
-		// wenn übergebener schlüssel dem knoten schlüssel übereinstimmt
+		
 		if (key == node.key) {
 			node.value = value;
-			// wenn übergebener schlüssel links vom aktuellen knoten schlüssel
-			// liegt
+			/
 		} else if (key.hashCode() < node.key.hashCode()) {
 			update(node.links, key, value);
-			// wenn übergebener schlüssel rechts vom aktuellen knoten schlüssel
-			// liegt
+			
 		} else {
 			update(node.rechts, key, value);
 		}
@@ -353,10 +351,9 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 	}
 
 	@Override
-	public void map(BiFunction<K, V, AssociativeBinaryTree<K, V>> bifunction) {
-
-	
+	public Baum<K,V> map(BiFunction<K, V, Baum<K, V>> biFunktion) {
+		Baum<K,V>neu = new Baum<K,V>();
+		return map(biFunktion,wurzel, neu);
 	}
-	
 
 }
