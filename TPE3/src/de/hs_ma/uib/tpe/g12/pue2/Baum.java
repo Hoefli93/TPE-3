@@ -1,6 +1,7 @@
 package de.hs_ma.uib.tpe.g12.pue2;
 
-import java.util.Map;
+import java.util.function.BiConsumer;
+import java.util.function.BiFunction;
 
 public class Baum<K, V> implements AssociativeArray<K, V> {
 
@@ -19,6 +20,62 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 		}
 
 		public Baumknoten() {
+		}
+
+		@Override
+		public int hashCode() {
+			final int prime = 31;
+			int result = 1;
+			result = prime * result + getOuterType().hashCode();
+			result = prime * result + ((key == null) ? 0 : key.hashCode());
+			result = prime * result + ((links == null) ? 0 : links.hashCode());
+			result = prime * result
+					+ ((rechts == null) ? 0 : rechts.hashCode());
+			result = prime * result + ((value == null) ? 0 : value.hashCode());
+			return result;
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			Baumknoten other = (Baumknoten) obj;
+			if (!getOuterType().equals(other.getOuterType()))
+				return false;
+			if (key == null) {
+				if (other.key != null)
+					return false;
+			} else if (!key.equals(other.key))
+				return false;
+			if (links == null) {
+				if (other.links != null)
+					return false;
+			} else if (!links.equals(other.links))
+				return false;
+			if (rechts == null) {
+				if (other.rechts != null)
+					return false;
+			} else if (!rechts.equals(other.rechts))
+				return false;
+			if (value == null) {
+				if (other.value != null)
+					return false;
+			} else if (!value.equals(other.value))
+				return false;
+			return true;
+		}
+
+		private Baum getOuterType() {
+			return Baum.this;
+		}
+
+		@Override
+		public String toString() {
+			return "Node [key=" + key + ", value=" + value + "]";
 		}
 
 	}
@@ -158,71 +215,65 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 	}
 
 	@Override
-	public void putAll(Baum <K, V> m) {
-		//Baum<? extends K, ? extends V> m
-		
-		
-		putAll(m,wurzel);
+	public void putAll(Baum<K, V> m) {
+
+		putAll(m, wurzel);
 	}
-		public void putAll(Baum<K,V> m,Baumknoten<K,V>node){
-			Baum<K,V>n = new Baum <K,V>();
-		
-			for(int i=0;i<=m.size();i++){
-				n.put(node.key,node.value);
+
+	public void putAll(Baum<K, V> m, Baumknoten<K, V> node) {
+		Baum<K, V> n = new Baum<K, V>();
+
+		for (int i = 0; i <= m.size(); i++) {
+			n.put(node.key, node.value);
 		}
 	}
 
 	@Override
 	public V remove(K key) {
-		if (!containsKey(key)) {
-			return null;
-		} else {
+		if (containsKey(key)) {
 			return remove(wurzel, key);
+
 		}
+
 	}
 
 	public V remove(Baumknoten<K, V> node, K key) {
-		Baum<K, V> tree = new Baum<K, V>();
-		
+
 		if (node.key == key) {
 			V wert = node.value;
-			node = null;
-			putAll(tree);
-			return wert;
+			Baumknoten<K, V> nodeLeft = node.links;
+			Baumknoten<K, V> nodeRight = node.rechts;
+			node = wurzel;
+			if (node.links.key == key) {
 
-			/*
-			 * Hinweis – Überlegen Sie, wie sie bei ¨ remove mit den Kindknoten
-			 * des zu entfernenden Knotens umgehen. Hier kann durch geschickte
-			 * Wiederverwendung einer anderen Methode viel Programmieraufwand
-			 * gespart werden.
-			 */
+				node.links = null;
+			} else if (node.rechts.key == key) {
+				node.rechts = null;
+			}
+			put(nodeLeft, wurzel);
+			put(nodeRight, wurzel);
+			return wert;
 
 		}
 
-		else if (key.hashCode() < node.key.hashCode()) {
-		
+		if (key.hashCode() < node.key.hashCode()) {
 			remove(node.links, key);
 		}
 
-		else if (key.hashCode() > node.key.hashCode()) {
+		if (key.hashCode() > node.key.hashCode()) {
 			remove(node.rechts, key);
 		}
 		return null;
-
 	}
 
 	@Override
 	public int size() {
-		if (isEmpty()) {
-			return 0;
-		} else {
+		if (!isEmpty()) {
 			return size(wurzel);
 		}
-
 	}
 
 	public int size(Baumknoten<K, V> node) {
-
 		int size = 1;
 		if (node.links != null && node.rechts != null) {
 			size += 2;
@@ -246,45 +297,66 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 
 	@Override
 	public void update(K key, V value) {
+		if (containsKey(key)) {
+			update(wurzel, key, value);
+		}
 
-		update(wurzel, key, value);
 	}
 
 	public void update(Baumknoten<K, V> node, K key, V value) {
-		node.value = value;
-
+		// wenn übergebener schlüssel dem knoten schlüssel übereinstimmt
+		if (key == node.key) {
+			node.value = value;
+			// wenn übergebener schlüssel links vom aktuellen knoten schlüssel
+			// liegt
+		} else if (key.hashCode() < node.key.hashCode()) {
+			update(node.links, key, value);
+			// wenn übergebener schlüssel rechts vom aktuellen knoten schlüssel
+			// liegt
+		} else {
+			update(node.rechts, key, value);
+		}
 	}
 
 	@Override
-	public  void forEach(BiConsumer<K,V>a) {
-		
-		for( a : Baum ){
-			
+	public void forEach(BiConsumer<K, V> biconsumer) {
+		if (wurzel != null) {
+			forEach(biconsumer, wurzel);
 		}
+	}
 
+	private void forEach(BiConsumer<K, V> biconsumer, Baumknoten<K, V> node) {
+		if (node != null) {
+			biconsumer.accept(node.key, node.value);
+		}
+		if (node.links != null) {
+			forEach(biconsumer, node.links);
+		}
+		if (node.rechts != null) {
+			forEach(biconsumer, node.rechts);
+		}
 	}
 
 	@Override
 	public void extractAll(Baum<K, V> m) {
-	//Baum<? extends K, ? extends V> m
-			
-			extractAll(m,wurzel);
-		}
-			public void extractAll(Baum<K,V> m,Baumknoten<K,V>node){
-				Baum<K,V>n = new Baum <K,V>();
-			
-				for(int i=0;i<=n.size();i++){
-					m.put(node.key,node.value);
-			}
-		}
-	
-	
 
-	@Override
-	public Baum<K, V> map(BiFunction<K, V> b) {
-
-		Baum<K, V> alt = new Baum<K, V>();
+		extractAll(m, wurzel);
 	}
 
-}
+	public void extractAll(Baum<K, V> m, Baumknoten<K, V> node) {
+		Baum<K, V> n = new Baum<K, V>();
+
+		for (int i = 0; i <= n.size(); i++) {
+			m.put(node.key, node.value);
+
+		}
+	}
+
+	@Override
+	public void map(BiFunction<K, V, AssociativeBinaryTree<K, V>> bifunction) {
+
+	
+	}
+	
+
 }
