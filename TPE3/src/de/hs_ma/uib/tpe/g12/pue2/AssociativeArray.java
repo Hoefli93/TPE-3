@@ -1,8 +1,6 @@
 package de.hs_ma.uib.tpe.g12.pue2;
 
-import java.util.Map;
-
-public interface AssociativeArray <K,V> {
+public interface AssociativeArray<K, V> {
 
 	public void clear();
 
@@ -14,19 +12,19 @@ public interface AssociativeArray <K,V> {
 
 	public void put(K key, V value);
 
-	public void putAll(Baum<? extends K,? extends V> m);
+	void putAll(Baum<K, V> m);
 
 	public V remove(K key);
 
 	public int size();
 
-	public void update(K key);
+	void update(K key, V value);
 
-	public void forEach(BiConsumer<K,V>a);
+	public void forEach();
 
 	void extractAll(Baum<K, V> neu);
 
-	public Baum<K,V> map(BiFunction<K,V>b);
+	public void map();
 
 	public V get(K key);
 
@@ -34,6 +32,4 @@ public interface AssociativeArray <K,V> {
 
 	
 
-	
-	
 }

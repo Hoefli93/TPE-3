@@ -1,10 +1,6 @@
 package de.hs_ma.uib.tpe.g12.pue2;
 
-
 import java.util.Map;
-import java.util.function.*;
-
-
 
 public class Baum<K, V> implements AssociativeArray<K, V> {
 
@@ -41,7 +37,12 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 
 	@Override
 	public boolean containsValue(V value) {
-		return containsValue(wurzel, value);
+		if (isEmpty()) {
+			return false;
+		} else {
+			return containsValue(wurzel, value);
+		}
+
 	}
 
 	public boolean containsValue(Baumknoten<K, V> node, V value) {
@@ -64,7 +65,12 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 
 	@Override
 	public boolean containsKey(K key) {
-		return containsKey(wurzel, key);
+		if (isEmpty()) {
+			return false;
+		} else {
+			return containsKey(wurzel, key);
+		}
+
 	}
 
 	public boolean containsKey(Baumknoten<K, V> node, K key) {
@@ -87,8 +93,12 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 
 	@Override
 	public V get(K key) {
+		if (!containsKey(key)) {
+			return null;
+		} else {
+			return get(wurzel, key);
+		}
 
-		return get(wurzel, key);
 	}
 
 	public V get(Baumknoten<K, V> node, K key) {
@@ -134,7 +144,7 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 	}
 
 	public void put(Baumknoten<K, V> node, Baumknoten<K, V> newNode) {
-		if (newNode.key.hashCode() < node.key.hashCode()) { 
+		if (newNode.key.hashCode() < node.key.hashCode()) {
 			if (node.links == null)
 				node.links = newNode;
 			else
@@ -148,33 +158,40 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 	}
 
 	@Override
-	public void putAll(Baum<? extends K, ? extends V> m) {
-
+	public void putAll(Baum <K, V> m) {
+		//Baum<? extends K, ? extends V> m
 		
 		
-		for(int i=0;i<=size();i++){
-			m.put(this.wurzel.key,));
+		putAll(m,wurzel);
 	}
+		public void putAll(Baum<K,V> m,Baumknoten<K,V>node){
+			Baum<K,V>n = new Baum <K,V>();
 		
+			for(int i=0;i<=m.size();i++){
+				n.put(node.key,node.value);
+		}
 	}
 
 	@Override
 	public V remove(K key) {
-
-		return remove(wurzel, key);
+		if (!containsKey(key)) {
+			return null;
+		} else {
+			return remove(wurzel, key);
+		}
 	}
 
 	public V remove(Baumknoten<K, V> node, K key) {
-		if (!containsKey(key)) {
-			return null;
-		}
-
+		Baum<K, V> tree = new Baum<K, V>();
+		
 		if (node.key == key) {
+			V wert = node.value;
 			node = null;
-			return node.value;
+			putAll(tree);
+			return wert;
 
 			/*
-			 * Hinweis – Uberlegen Sie, wie sie bei ¨ remove mit den Kindknoten
+			 * Hinweis – Überlegen Sie, wie sie bei ¨ remove mit den Kindknoten
 			 * des zu entfernenden Knotens umgehen. Hier kann durch geschickte
 			 * Wiederverwendung einer anderen Methode viel Programmieraufwand
 			 * gespart werden.
@@ -182,11 +199,12 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 
 		}
 
-		else if (node.key.hashCode() < wurzel.key.hashCode()) {
+		else if (key.hashCode() < node.key.hashCode()) {
+		
 			remove(node.links, key);
 		}
 
-		else if (node.key.hashCode() < wurzel.key.hashCode()) {
+		else if (key.hashCode() > node.key.hashCode()) {
 			remove(node.rechts, key);
 		}
 		return null;
@@ -195,21 +213,28 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 
 	@Override
 	public int size() {
-		
-		return size(wurzel);
+		if (isEmpty()) {
+			return 0;
+		} else {
+			return size(wurzel);
+		}
+
 	}
 
 	public int size(Baumknoten<K, V> node) {
 
-		int size = 0;
-
-		if (node.key.hashCode() < wurzel.key.hashCode()) {
+		int size = 1;
+		if (node.links != null && node.rechts != null) {
+			size += 2;
+			size(node.links);
+			size(node.rechts);
+		} else if (node.links != null) {
 			size++;
 			size(node.links);
 
 		}
 
-		else if (node.key.hashCode() < wurzel.key.hashCode()) {
+		else if (node.rechts != null) {
 			size++;
 			size(node.rechts);
 
@@ -220,14 +245,13 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 	}
 
 	@Override
-	public void update(K key) {
+	public void update(K key, V value) {
 
-		update(wurzel, key);
+		update(wurzel, key, value);
 	}
 
-	public void update(Baumknoten<K, V> node, K key) {
-
-		node.value = get(key);
+	public void update(Baumknoten<K, V> node, K key, V value) {
+		node.value = value;
 
 	}
 
@@ -241,20 +265,26 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 	}
 
 	@Override
-	public void extractAll(Baum<K,V> neu) {
-
-		Baum<K,V> alt = new Baum<K,V>();
+	public void extractAll(Baum<K, V> m) {
+	//Baum<? extends K, ? extends V> m
+			
+			extractAll(m,wurzel);
+		}
+			public void extractAll(Baum<K,V> m,Baumknoten<K,V>node){
+				Baum<K,V>n = new Baum <K,V>();
+			
+				for(int i=0;i<=n.size();i++){
+					m.put(node.key,node.value);
+			}
+		}
 	
-		neu.putAll(alt);
-	}
+	
 
 	@Override
-	public Baum<K,V> map(BiFunction<K,V>b) {
-		
-		Baum<K,V> alt = new Baum<K,V>();
+	public Baum<K, V> map(BiFunction<K, V> b) {
+
+		Baum<K, V> alt = new Baum<K, V>();
 	}
 
-	
-	
-
+}
 }
