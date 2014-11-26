@@ -1,16 +1,33 @@
+/*
+ * 
+ */
 package de.hs_ma.uib.tpe.g12.pue2;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JUnitBaum.
+ */
 public class JUnitBaum {
 	
-	 Baum<Integer,String>baumEins = new Baum<Integer,String>();
-	 Baum<Integer,String>baumZwei = new Baum<Integer,String>();
-	 Baum<Integer,String>baumDrei = new Baum<Integer,String>();
-	 Baum<Integer,String>baumVier = new Baum<Integer,String>();
+	 /** The baum eins. */
+ 	Baum<Integer,String>baumEins = new Baum<Integer,String>();
+	 
+ 	/** The baum zwei. */
+ 	Baum<Integer,String>baumZwei = new Baum<Integer,String>();
+	 
+ 	/** The baum drei. */
+ 	Baum<Integer,String>baumDrei = new Baum<Integer,String>();
+	 
+ 	/** The baum vier. */
+ 	Baum<Integer,String>baumVier = new Baum<Integer,String>();
 
+	/**
+	 * Test.
+	 */
 	@Test
 	public void test() {
 		 baumEins.put(5,"Tiger");
