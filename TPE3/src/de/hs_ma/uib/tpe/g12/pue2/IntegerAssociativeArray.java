@@ -1,11 +1,11 @@
 package de.hs_ma.uib.tpe.g12.pue2;
 
-public class IntegerAssociativeArray<K,Integer> extends Baum<K,Integer> {
+public class IntegerAssociativeArray<K> extends Baum<K,Integer> {
 
-	public IntegerAssociativeArray() {
-		super();
+	
+	public IntegerAssociativeArray(K key, Integer value) {
+		super(key, value);
 	}
 
-	IntegerAssociativeArray<K, Integer> eins = new IntegerAssociativeArray<K, Integer>();
 
 }

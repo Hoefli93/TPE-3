@@ -7,6 +7,10 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 
 	public class Baumknoten<K, V> {
 
+
+
+		
+
 		private K key;
 		private V value;
 		private Baumknoten<K, V> links;
@@ -21,6 +25,23 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 
 		public Baumknoten() {
 		}
+		
+		public K getKey() {
+			return key;
+		}
+
+		public V getValue() {
+			return value;
+		}
+
+		public Baumknoten<K, V> getLinks() {
+			return links;
+		}
+
+		public Baumknoten<K, V> getRechts() {
+			return rechts;
+		}
+
 
 		@Override
 		public int hashCode() {
@@ -81,6 +102,12 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 	}
 
 	Baumknoten<K, V> wurzel = null;
+
+	public Baum(K key, V value) {
+
+		this.wurzel.key = key;
+		this.wurzel.value = value;
+	}
 
 	public Baum() {
 
@@ -179,7 +206,10 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 
 	@Override
 	public boolean isEmpty() {
-		return wurzel == null;
+		if (wurzel != null) {
+			return false;
+		}
+		return true;
 	}
 
 	@Override
@@ -337,7 +367,6 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 
 	@Override
 	public void extractAll(Baum<K, V> m) {
-
 		extractAll(m, wurzel);
 	}
 
@@ -350,10 +379,9 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 		}
 	}
 
-	@Override
-	public Baum<K,V> map(BiFunction<K, V, Baum<K, V>> biFunktion) {
-		Baum<K,V>neu = new Baum<K,V>();
-		return map(biFunktion,wurzel, neu);
+	public Baum<K, V> map(BiFunction<K, V, Baum<K, V>> biFunktion) {
+		Baum<K, V> neu = new Baum<K, V>();
+		return map(biFunktion, wurzel, neu);
 	}
 
 }
