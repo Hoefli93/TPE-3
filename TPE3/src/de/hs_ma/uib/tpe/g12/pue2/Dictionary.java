@@ -1,10 +1,4 @@
-<<<<<<< HEAD
 
-=======
-/*
- * 
- */
->>>>>>> branch 'master' of https://github.com/Hoefli93/TPE-3.git
 package de.hs_ma.uib.tpe.g12.pue2;
 
 /**
@@ -13,10 +7,6 @@ package de.hs_ma.uib.tpe.g12.pue2;
  * 1331770
  */
 
-// TODO: Auto-generated Javadoc
-/**
- * The Class Dictionary.
- */
 public class Dictionary extends Baum<String, String> {
 
 	/**

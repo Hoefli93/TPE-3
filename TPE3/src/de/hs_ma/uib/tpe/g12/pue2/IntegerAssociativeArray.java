@@ -1,22 +1,12 @@
-<<<<<<< HEAD
 
-=======
-/*
- * 
- */
->>>>>>> branch 'master' of https://github.com/Hoefli93/TPE-3.git
 package de.hs_ma.uib.tpe.g12.pue2;
 
-<<<<<<< HEAD
 /**
  * 1312740
  * 1320733
  * 1331770
  */
 
-=======
-// TODO: Auto-generated Javadoc
->>>>>>> branch 'master' of https://github.com/Hoefli93/TPE-3.git
 /**
  * The Class IntegerAssociativeArray.
  *
@@ -24,10 +14,6 @@ package de.hs_ma.uib.tpe.g12.pue2;
  */
 public class IntegerAssociativeArray<K> extends Baum<K,Integer> {
 
-<<<<<<< HEAD
-=======
-	
->>>>>>> branch 'master' of https://github.com/Hoefli93/TPE-3.git
 	/**
 	 * Instantiates a new integer associative array.
 	 *

@@ -1,10 +1,4 @@
-<<<<<<< HEAD
 
-=======
-/*
- * 
- */
->>>>>>> branch 'master' of https://github.com/Hoefli93/TPE-3.git
 package de.hs_ma.uib.tpe.g12.pue2;
 
 /**
@@ -16,83 +10,40 @@ package de.hs_ma.uib.tpe.g12.pue2;
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 
-<<<<<<< HEAD
 
 /**
  * The Class Baum.
  *
  * @param <K> the key type
  * @param <V> the value type
-=======
-// TODO: Auto-generated Javadoc
-/**
- * The Class Baum.
- * 
- * @param <K>
- *            the key type
- * @param <V>
- *            the value type
->>>>>>> branch 'master' of https://github.com/Hoefli93/TPE-3.git
  */
 public class Baum<K, V> implements AssociativeArray<K, V> {
 
 	/**
 	 * The Class Baumknoten.
-<<<<<<< HEAD
 	 *
 	 * @param <K> the key type
 	 * @param <V> the value type
-=======
-	 * 
-	 * @param <K>
-	 *            the key type
-	 * @param <V>
-	 *            the value type
->>>>>>> branch 'master' of https://github.com/Hoefli93/TPE-3.git
 	 */
 	public class Baumknoten<K, V> {
-<<<<<<< HEAD
 		
-=======
-
->>>>>>> branch 'master' of https://github.com/Hoefli93/TPE-3.git
 		/** The key. */
 		private K key;
-<<<<<<< HEAD
 		
-=======
-
->>>>>>> branch 'master' of https://github.com/Hoefli93/TPE-3.git
 		/** The value. */
 		private V value;
-<<<<<<< HEAD
 		
-=======
-
->>>>>>> branch 'master' of https://github.com/Hoefli93/TPE-3.git
 		/** The links. */
 		private Baumknoten<K, V> links;
-<<<<<<< HEAD
 		
-=======
-
->>>>>>> branch 'master' of https://github.com/Hoefli93/TPE-3.git
 		/** The rechts. */
 		private Baumknoten<K, V> rechts;
 
 		/**
 		 * Instantiates a new baumknoten.
-<<<<<<< HEAD
 		 *
 		 * @param key the key
 		 * @param value the value
-=======
-		 * 
-		 * @param key
-		 *            the key
-		 * @param value
-		 *            the value
->>>>>>> branch 'master' of https://github.com/Hoefli93/TPE-3.git
 		 */
 		public Baumknoten(K key, V value) {
 			this.key = key;
@@ -106,17 +57,10 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 		 */
 		public Baumknoten() {
 		}
-<<<<<<< HEAD
 		
 		/**
 		 * Gets the key.
 		 *
-=======
-
-		/**
-		 * Gets the key.
-		 * 
->>>>>>> branch 'master' of https://github.com/Hoefli93/TPE-3.git
 		 * @return the key
 		 */
 		public K getKey() {
@@ -125,11 +69,7 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 
 		/**
 		 * Gets the value.
-<<<<<<< HEAD
 		 *
-=======
-		 * 
->>>>>>> branch 'master' of https://github.com/Hoefli93/TPE-3.git
 		 * @return the value
 		 */
 		public V getValue() {
@@ -138,11 +78,7 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 
 		/**
 		 * Gets the links.
-<<<<<<< HEAD
 		 *
-=======
-		 * 
->>>>>>> branch 'master' of https://github.com/Hoefli93/TPE-3.git
 		 * @return the links
 		 */
 		public Baumknoten<K, V> getLinks() {
@@ -151,27 +87,15 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 
 		/**
 		 * Gets the rechts.
-<<<<<<< HEAD
 		 *
-=======
-		 * 
->>>>>>> branch 'master' of https://github.com/Hoefli93/TPE-3.git
 		 * @return the rechts
 		 */
 		public Baumknoten<K, V> getRechts() {
 			return rechts;
 		}
 
-<<<<<<< HEAD
 
 	
-=======
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see java.lang.Object#hashCode()
-		 */
->>>>>>> branch 'master' of https://github.com/Hoefli93/TPE-3.git
 		@Override
 		public int hashCode() {
 			final int prime = 31;
@@ -185,15 +109,7 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 			return result;
 		}
 
-<<<<<<< HEAD
 		
-=======
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see java.lang.Object#equals(java.lang.Object)
-		 */
->>>>>>> branch 'master' of https://github.com/Hoefli93/TPE-3.git
 		@Override
 		public boolean equals(Object obj) {
 			if (this == obj)
@@ -230,26 +146,14 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 
 		/**
 		 * Gets the outer type.
-<<<<<<< HEAD
 		 *
-=======
-		 * 
->>>>>>> branch 'master' of https://github.com/Hoefli93/TPE-3.git
 		 * @return the outer type
 		 */
 		private Baum getOuterType() {
 			return Baum.this;
 		}
 
-<<<<<<< HEAD
 		
-=======
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see java.lang.Object#toString()
-		 */
->>>>>>> branch 'master' of https://github.com/Hoefli93/TPE-3.git
 		@Override
 		public String toString() {
 			return "Node {KEY=" + value + "}";
@@ -262,17 +166,9 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 
 	/**
 	 * Instantiates a new baum.
-<<<<<<< HEAD
 	 *
 	 * @param key the key
 	 * @param value the value
-=======
-	 * 
-	 * @param key
-	 *            the key
-	 * @param value
-	 *            the value
->>>>>>> branch 'master' of https://github.com/Hoefli93/TPE-3.git
 	 */
 	public Baum(K key, V value) {
 
@@ -287,13 +183,8 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 
 	}
 
-<<<<<<< HEAD
 	/**
 	 * clear soll das assoziative Array leeren
-=======
-	/*
-	 * soll das assoziative Array leeren
->>>>>>> branch 'master' of https://github.com/Hoefli93/TPE-3.git
 	 */
 	@Override
 	public void clear() {
@@ -301,13 +192,7 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 
 	}
 
-<<<<<<< HEAD
 	
-=======
-	/*
-	 * (soll überprüfen, ob der übergebene Wert im assoziativen Array vorkommt
-	 */
->>>>>>> branch 'master' of https://github.com/Hoefli93/TPE-3.git
 	@Override
 	public boolean containsValue(V value) {
 		if (isEmpty()) {
@@ -319,19 +204,10 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 	}
 
 	/**
-<<<<<<< HEAD
 	 * containsValue soll uberprüfen, ob der übergebene Wert im assoziativen Array vorkommt
 	 *
 	 * @param node the node
 	 * @param value the value
-=======
-	 * Contains value.
-	 * 
-	 * @param node
-	 *            the node
-	 * @param value
-	 *            the value
->>>>>>> branch 'master' of https://github.com/Hoefli93/TPE-3.git
 	 * @return true, if successful
 	 */
 	public boolean containsValue(Baumknoten<K, V> node, V value) {
@@ -352,14 +228,7 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 
 	}
 
-<<<<<<< HEAD
 	
-=======
-	/*
-	 * soll überprüfen, ob der übergebene Schlüssel im assoziativen Array
-	 * vorkommt
-	 */
->>>>>>> branch 'master' of https://github.com/Hoefli93/TPE-3.git
 	@Override
 	public boolean containsKey(K key) {
 		if (isEmpty()) {
@@ -371,19 +240,10 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 	}
 
 	/**
-<<<<<<< HEAD
 	 * containsKey soll uberprüfen, ob der übergebene Schlüssel im assoziativen Array vorkommt 
 	 *
 	 * @param node the node
 	 * @param key the key
-=======
-	 * Contains key.
-	 * 
-	 * @param node
-	 *            the node
-	 * @param key
-	 *            the key
->>>>>>> branch 'master' of https://github.com/Hoefli93/TPE-3.git
 	 * @return true, if successful
 	 */
 	public boolean containsKey(Baumknoten<K, V> node, K key) {
@@ -404,13 +264,7 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 		return false;
 	}
 
-<<<<<<< HEAD
 	
-=======
-	/*
-	 * soll den passenden Wert zum ubergebenen Schlüssel zurückgeben
-	 */
->>>>>>> branch 'master' of https://github.com/Hoefli93/TPE-3.git
 	@Override
 	public V get(K key) {
 		if (!containsKey(key)) {
@@ -422,19 +276,10 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 	}
 
 	/**
-<<<<<<< HEAD
 	 * get soll den passenden Wert zum ubergebenen Schlüssel zurückgeben 
 	 *
 	 * @param node the node
 	 * @param key the key
-=======
-	 * Gets the.
-	 * 
-	 * @param node
-	 *            the node
-	 * @param key
-	 *            the key
->>>>>>> branch 'master' of https://github.com/Hoefli93/TPE-3.git
 	 * @return the v
 	 */
 	public V get(Baumknoten<K, V> node, K key) {
@@ -455,19 +300,11 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 		return value;
 
 	}
-<<<<<<< HEAD
 	
 	/**
 	 * isEmpty soll uberprüfen, ob das assoziative Array leer ist 
 	 
 	 * @return the boolean
-=======
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see de.hs_ma.uib.tpe.g12.pue2.AssociativeArray#isEmpty()
->>>>>>> branch 'master' of https://github.com/Hoefli93/TPE-3.git
 	 */
 	@Override
 	public boolean isEmpty() {
@@ -477,13 +314,7 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 		return true;
 	}
 
-<<<<<<< HEAD
 	
-=======
-	/*
-	 * soll überprüfen, ob das assoziative Array leer ist
-	 */
->>>>>>> branch 'master' of https://github.com/Hoefli93/TPE-3.git
 	@Override
 	public void put(K key, V value) {
 		Baumknoten<K, V> newNode = new Baumknoten<K, V>(key, value);
@@ -503,20 +334,10 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 	}
 
 	/**
-<<<<<<< HEAD
 	 * put soll den ubergebenen Schlüssel und Wert im assoziativen Array speichern
 	 *
 	 * @param node the node
 	 * @param newNode the new node
-=======
-	 * Put.
-	 * 
-	 * @param node
-	 *            the node
-	 * @param newNode
-	 *             soll den übergebenen Schlüssel und Wert im
-	 *            assoziativen Array speichern
->>>>>>> branch 'master' of https://github.com/Hoefli93/TPE-3.git
 	 */
 	public void put(Baumknoten<K, V> node, Baumknoten<K, V> newNode) {
 		if (newNode.key.hashCode() < node.key.hashCode()) {
@@ -532,15 +353,7 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 		}
 	}
 
-<<<<<<< HEAD
 	
-=======
-	/*
-	 * soll alle Schlussel-Wert-Paare des übergebenen assoziativen Arrays zum
-	 * aktuellen assoziativen Array hinzufugen
-	 */
-
->>>>>>> branch 'master' of https://github.com/Hoefli93/TPE-3.git
 	@Override
 	public void putAll(Baum<K, V> m) {
 
@@ -548,20 +361,11 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 	}
 
 	/**
-<<<<<<< HEAD
 	 * putAll soll alle Schlussel-Wert-Paare des übergebenen assoziativen Arrays zum aktuellen assoziati- ¨
 	ven Array hinzufugen 
 	 *
 	 * @param m the m
 	 * @param node the node
-=======
-	 * Put all.
-	 * 
-	 * @param m
-	 *            the m
-	 * @param node
-	 *            the node
->>>>>>> branch 'master' of https://github.com/Hoefli93/TPE-3.git
 	 */
 	public void putAll(Baum<K, V> m, Baumknoten<K, V> node) {
 		Baum<K, V> n = new Baum<K, V>();
@@ -571,15 +375,7 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 		}
 	}
 
-<<<<<<< HEAD
 	
-=======
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see de.hs_ma.uib.tpe.g12.pue2.AssociativeArray#remove(java.lang.Object)
-	 */
->>>>>>> branch 'master' of https://github.com/Hoefli93/TPE-3.git
 	@Override
 	public V remove(K key) {
 		if (containsKey(key)) {
@@ -591,26 +387,12 @@ public class Baum<K, V> implements AssociativeArray<K, V> {
 	}
 
 	/**
-<<<<<<< HEAD
 	 * remove soll das Schlussel-Wert-Paar des übergebenen Schlüssels aus dem assoziativen Array entfer- ¨
 nen und den Wert zuruckliefern
 	 *
 	 * @param node the node
 	 * @param key the key
 	 * @return the v
-=======
-	 * Removes the.
-	 * 
-	 * @param node
-	 *            the node
-	 * @param key
-	 *            the key
-	 * @return the v
-	 * 
-	 * soll das Schlussel-Wert-Paar des ¨ 
-	 * übergebenen Schlüssels aus dem assoziativen Array entfernen
-	 *	und den Wert zuruckliefern 
->>>>>>> branch 'master' of https://github.com/Hoefli93/TPE-3.git
 	 */
 	public V remove(Baumknoten<K, V> node, K key) {
 
@@ -641,15 +423,7 @@ nen und den Wert zuruckliefern
 		return null;
 	}
 
-<<<<<<< HEAD
 	
-=======
-	/*
-	 * 
-	 * 
-	 * 
-	 */
->>>>>>> branch 'master' of https://github.com/Hoefli93/TPE-3.git
 	@Override
 	public int size() {
 		if (!isEmpty()) {
@@ -659,21 +433,10 @@ nen und den Wert zuruckliefern
 	}
 
 	/**
-<<<<<<< HEAD
 	 * size soll die Anzahl der Schlussel-Wert-Paare zurückgeben
 	 *
 	 * @param node the node
 	 * @return the int
-=======
-	 * Size.
-	 * 
-	 * @param node
-	 *            the node
-	 * @return the int
-	 * 
-	 * 
-	 * soll die Anzahl der Schlussel-Wert-Paare zurückgeben
->>>>>>> branch 'master' of https://github.com/Hoefli93/TPE-3.git
 	 */
 	public int size(Baumknoten<K, V> node) {
 		int size = 1;
@@ -697,13 +460,7 @@ nen und den Wert zuruckliefern
 
 	}
 
-<<<<<<< HEAD
 
-=======
-	/*
-	 * 
-	 */
->>>>>>> branch 'master' of https://github.com/Hoefli93/TPE-3.git
 	@Override
 	public void update(K key, V value) {
 		if (containsKey(key)) {
@@ -713,26 +470,11 @@ nen und den Wert zuruckliefern
 	}
 
 	/**
-<<<<<<< HEAD
 	 * update soll den Wert des ubergebenen Schlüssels mit dem übergebenen Wert aktualisieren
 	 *
 	 * @param node the node
 	 * @param key the key
 	 * @param value the value
-=======
-	 * Update.
-	 * 
-	 * @param node
-	 *            the node
-	 * @param key
-	 *            the key
-	 * @param value
-	 *            the value
-	 *            
-	 *
-	 *   soll den Wert des ubergebenen Schlüssels mit dem übergebenen    
-	 *          Wert aktualisieren    
->>>>>>> branch 'master' of https://github.com/Hoefli93/TPE-3.git
 	 */
 	public void update(Baumknoten<K, V> node, K key, V value) {
 		
@@ -747,16 +489,7 @@ nen und den Wert zuruckliefern
 		}
 	}
 
-<<<<<<< HEAD
 	
-=======
-	/**
-	 * For each.
-	 * 
-	 * @param biconsumer
-	 *            the biconsumer
-	 */
->>>>>>> branch 'master' of https://github.com/Hoefli93/TPE-3.git
 	@Override
 	public void forEach(BiConsumer<K, V> biconsumer) {
 		if (wurzel != null) {
@@ -765,24 +498,11 @@ nen und den Wert zuruckliefern
 	}
 
 	/**
-<<<<<<< HEAD
 	 * forEach soll den ubergebenen BiConsumer fur alle Schlüssel-Wert-Paare des assoziativen Arrays ¨
 	ausführen 
 	 *
 	 * @param biconsumer the biconsumer
 	 * @param node the node
-=======
-	 * For each.
-	 * 
-	 * @param biconsumer
-	 *            the biconsumer
-	 * @param node
-	 *            the node
-	 *            
-	 *soll den übergebenen BiConsumer fur alle Schlüssel-Wert-Paare des assoziativen Arrays ausführen
-	 * 
-	 * 
->>>>>>> branch 'master' of https://github.com/Hoefli93/TPE-3.git
 	 */
 	private void forEach(BiConsumer<K, V> biconsumer, Baumknoten<K, V> node) {
 		if (node != null) {
@@ -796,40 +516,18 @@ nen und den Wert zuruckliefern
 		}
 	}
 
-<<<<<<< HEAD
 	
-=======
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * de.hs_ma.uib.tpe.g12.pue2.AssociativeArray#extractAll(de.hs_ma.uib.tpe
-	 * .g12.pue2.Baum)
-	 */
->>>>>>> branch 'master' of https://github.com/Hoefli93/TPE-3.git
 	@Override
 	public void extractAll(Baum<K, V> m) {
 		extractAll(m, wurzel);
 	}
 
 	/**
-<<<<<<< HEAD
 	 * extractAll soll alle Schlussel-Wert-Paare des aktuellen assoziativen Arrays zum übergebenen asso- ¨
 ziativen Array hinzufugen 
 	 *
 	 * @param m the m
 	 * @param node the node
-=======
-	 * Extract all.
-	 * 
-	 * @param m
-	 *            the m
-	 * @param node
-	 *  the node
-	 *soll alle Schlussel-Wert-Paare des aktuellen assoziativen Arrays zum 
-	 *übergebenen assoziativen Array hinzufügen
-	 *            
->>>>>>> branch 'master' of https://github.com/Hoefli93/TPE-3.git
 	 */
 	public void extractAll(Baum<K, V> m, Baumknoten<K, V> node) {
 		Baum<K, V> n = new Baum<K, V>();
@@ -840,24 +538,9 @@ ziativen Array hinzufugen
 		}
 	}
 
-<<<<<<< HEAD
 	
 	@Override
 	public Baum<K, V> map(BiFunction<K, V, V> bifunction) {
-=======
-	/**
-	 * Map.
-	 * 
-	 * @param biFunktion
-	 *            the bi funktion
-	 * @return the baum
-	 * soll die ubergebene ¨ BiFunction fur alle Schl ¨ ussel-Wert-Paare des assoziativen Arrays ausf ¨ uhren ¨
-	 * und damit ein neues assoziatives Array erzeugen, welches die ver¨anderten Werte auf die alten
-	 * Schlussel abbildet
-	 * 
-	 */
-	public Baum<K, V> map(BiFunction<K, V, Baum<K, V>> biFunktion) {
->>>>>>> branch 'master' of https://github.com/Hoefli93/TPE-3.git
 		Baum<K, V> neu = new Baum<K, V>();
 		return map(bifunction);
 		
